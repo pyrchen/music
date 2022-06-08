@@ -23,7 +23,7 @@ function App() {
 
   const handleUpdate = () => {
     const audio = audioRef.current;
-    const {currentTime, duration} = audio;
+    const {currentTime} = audio;
 
     currentTime - time >= 1 && setTime(Math.floor(currentTime));
   }
