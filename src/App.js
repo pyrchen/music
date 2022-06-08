@@ -1,6 +1,5 @@
-import './App.scss';
-import './App.css';
 import {useEffect, useRef, useState} from 'react';
+import './App.scss';
 
 function App() {
   const audioRef = useRef(null);
