@@ -23,8 +23,8 @@ function App() {
 
   const handleUpdate = () => {
     const audio = audioRef.current;
-    const {currentTime, duration} = audio;
-    inpRef.current.value = Math.floor(time / duration * 100);
+    const {currentTime} = audio;
+    inpRef.current.value = time;
     currentTime - time >= 1 && setTime(Math.floor(currentTime));
   }
 
@@ -35,11 +35,8 @@ function App() {
 
   const handleChangeInput = (e) => {
     const {target} = e;
-
-    const value = Math.floor(audioRef.current.duration / 100 * target.value);
-
-    setTime(value);
-    audioRef.current.currentTime = value;
+    setTime(target.value);
+    audioRef.current.currentTime = target.value;
   }
 
   useEffect(() => {
@@ -66,7 +63,7 @@ function App() {
       </div>
       <div className="what"><span>Зажигает свет</span><span>{time}s/233s</span></div>
       <div>
-        <input type="range" ref={inpRef} onInput={handleChangeInput} defaultValue={0}/>
+        <input type="range" min={0} max={233} ref={inpRef} onInput={handleChangeInput} defaultValue={0}/>
       </div>
       <div ref={moveRef} className="move bottom">
         <div className="lds-facebook">
